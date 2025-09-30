@@ -1,3 +1,5 @@
+![Example](example.gif)
+
 # Build
 
 Use the provided `build.sh` file
