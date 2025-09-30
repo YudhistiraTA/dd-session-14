@@ -14,7 +14,6 @@ typedef struct _History {
   Node* oldest;
   Node* current;
   Node* newest;
-  uint8_t current_index;
 } History;
 
 #endif  // LIST_H

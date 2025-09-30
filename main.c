@@ -36,9 +36,24 @@ int push(Arena* arena, History* history, uint8_t x, uint8_t y) {
   if (history->oldest == NULL) {
     history->oldest = newNode;
   }
-  history->current_index++;
 
   return 0;
+}
+
+int undo(History* history) {
+  if (history->current->prev != NULL) {
+    history->current = history->current->prev;
+    return 0;
+  }
+  return -1;  // No more undo available
+}
+
+int redo(History* history) {
+  if (history->current->next != NULL) {
+    history->current = history->current->next;
+    return 0;
+  }
+  return -1;  // No more redo available
 }
 
 int main() {
@@ -85,16 +100,10 @@ int main() {
         }
         break;
       case 'z':  // Undo
-        if (history->current->prev != NULL) {
-          history->current = history->current->prev;
-          history->current_index--;
-        }
+        undo(history);
         break;
       case 'x':  // Redo
-        if (history->current->next != NULL) {
-          history->current = history->current->next;
-          history->current_index++;
-        }
+        redo(history);
         break;
       case 'q':
         break;
