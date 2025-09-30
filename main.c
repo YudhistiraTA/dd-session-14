@@ -1,8 +1,3 @@
-#include <stdint.h>
-#include <stdlib.h>
-#include <termios.h>
-#include <unistd.h>
-
 #include "arena.h"
 #include "display.h"
 #include "list.h"
