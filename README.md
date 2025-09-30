@@ -10,6 +10,10 @@ chmod +x ./build.sh
 ```
 or manually compile using gcc
 ```sh
-gcc -Wall -Werror -O3 main.c arena.c display.c -o main
+gcc -Wall -Werror -O3 main.c arena.c display.c list.c -o main
 ./main
 ```
+
+# Note
+
+Unbuffered terminal input is untested for Windows
