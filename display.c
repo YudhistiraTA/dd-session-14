@@ -24,6 +24,7 @@ void render(History* history, char command) {
   }
   printf("Last action: %c\n", command);
   printf("z - undo    x - redo\n");
-  printf("w - up      s - down    a - left    d - right\n");
+  printf("w - up      s - down\na - left    d - right\n");
+  printf("c - delete\n");
   printf("q - quit\n");
 }

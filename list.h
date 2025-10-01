@@ -24,4 +24,6 @@ int undo(History* history);
 
 int redo(History* history);
 
+int delete(History* history);
+
 #endif  // LIST_H

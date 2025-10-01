@@ -47,3 +47,39 @@ int redo(History* history) {
   }
   return -1;  // No more redo available
 }
+
+// Deletes the history node on current position
+int delete(History* history) {
+  if (history->current == NULL) {
+    return -1;  // No current node to delete
+  }
+
+  Node* toDelete = history->current;
+
+  // Update the previous node's next pointer
+  if (toDelete->prev != NULL) {
+    toDelete->prev->next = toDelete->next;
+  } else {
+    // If there's no previous node, we're deleting the oldest node
+    history->oldest = toDelete->next;
+  }
+
+  // Update the next node's prev pointer
+  if (toDelete->next != NULL) {
+    toDelete->next->prev = toDelete->prev;
+  } else {
+    // If there's no next node, we're deleting the newest node
+    history->newest = toDelete->prev;
+  }
+
+  // Move current pointer
+  if (toDelete->next != NULL) {
+    history->current = toDelete->next;
+  } else if (toDelete->prev != NULL) {
+    history->current = toDelete->prev;
+  } else {
+    history->current = NULL;  // List is now empty
+  }
+
+  return 0;
+}

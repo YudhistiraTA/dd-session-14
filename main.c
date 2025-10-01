@@ -54,6 +54,12 @@ int main() {
         break;
       case 'q':
         break;
+      case 'c':  // Delete current position
+        if (delete(history) == -1) {
+          // If delete fails (e.g., no current node), push back to (0,0)
+          push(arena, history, 0, 0);
+        }
+        break;
       default:
         printf("Invalid command!\n");
     }
